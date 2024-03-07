@@ -1,0 +1,27 @@
+<!-- app/views/appointments/new.html.erb -->
+<h1>New Appointment</h1>
+
+<%= form_with(model: @appointment, url: appointments_path, method: :post) do |form| %>
+  <div>
+    <%= form.label :start_time %>
+    <%= form.time_field :start_time %>
+  </div>
+  <br>
+
+  <div>
+    <%= form.label :end_time %>
+    <%= form.time_field :end_time %>
+  </div>
+  <br>
+
+  <div>
+    <%= form.label :doctor_id %>
+    <%= form.collection_select :doctor_id, Doctor.all, :id, :full_name %>
+  </div>
+  <br>
+
+  
+  <br>
+
+  <%= form.submit 'Create Appointment' %>
+<% end %>

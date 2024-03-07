@@ -1,0 +1,12 @@
+<!-- app/views/doctors/new.html.erb -->
+<h1>Sign Up</h1>
+
+<%= form_with(model: @doctor, url: doctors_path) do |form| %>
+  <%= form.label :full_name %>
+  <%= form.text_field :full_name %>
+  <br>
+  <%= form.label :phone_number %>
+  <%= form.text_field :phone_number %>
+
+  <%= form.submit "Sign Up" %>
+<% end %>

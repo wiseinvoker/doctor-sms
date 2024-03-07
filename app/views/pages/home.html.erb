@@ -1,0 +1,20 @@
+<!-- app/views/pages/home.html.erb -->
+<h1>Welcome to Our Clinic!</h1>
+
+<div>
+  <% if doctor_signed_in? || patient_signed_in? %>
+    <% if doctor_signed_in? %>
+    <%= link_to 'Logout', destroy_doctor_session_path, method: :delete, class: 'btn btn-danger' %>
+    <% else %>
+    <%= link_to 'Logout', destroy_patient_session_path, method: :delete, class: 'btn btn-danger' %>
+    <% end %>
+    <div>
+      <h2>Book an Appointment:</h2>
+      <%= link_to 'Book Appointment', appointments_path, class: 'btn btn-success' %>
+    </div>
+  <% else %>
+    <h2>Login as:</h2>
+    <%= link_to 'Doctor', new_doctor_session_path, class: 'btn btn-primary' %>
+    <%= link_to 'Patient', new_patient_session_path, class: 'btn btn-primary' %>
+  <% end %>
+</div>

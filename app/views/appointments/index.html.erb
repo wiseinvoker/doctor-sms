@@ -1,0 +1,12 @@
+<!-- app/views/appointments/index.html.erb -->
+<h1>Book an Appointment</h1>
+
+<h1>Available Slots</h1>
+<% @availabilities.each do |availability| %>
+  <div>
+    <p>Date: <%= availability.day_of_week.strftime('%Y-%m-%d') %></p>
+    <p>Time: <%= availability.start_time.strftime('%H:%M') %> - <%= availability.end_time.strftime('%H:%M') %></p>
+    <p>Doctor: <%= availability.doctor.full_name %></p>
+    <%= link_to "Book Appointment", book_appointment_patient_path(id: availability.doctor.id, availability_id: availability.id), class: "btn btn-primary" %>
+  </div>
+<% end %>
