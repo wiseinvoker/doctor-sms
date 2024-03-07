@@ -25,9 +25,10 @@ class TriggersController < ApplicationController
     @trigger = Trigger.new(trigger_params)
 
     if @trigger.save
-      redirect_to @trigger, notice: 'Trigger was successfully created.'
+      ActionCable.server.broadcast('triggers_channel', trigger: @trigger)
+      render json: @trigger, status: :created
     else
-      render :new
+      render json: @trigger.errors, status: :unprocessable_entity
     end
   end
 

@@ -1,23 +1,25 @@
 <!-- app/views/availabilities/new.html.erb -->
-<h1>Set Availability</h1>
 
-<%= link_to 'Logout', destroy_doctor_session_path, method: :delete, class: 'btn btn-danger' %>
+<div class="container">
+    <div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>New Slot</h1>
+        <%= form_with(model: @availability, url: availabilities_path, method: :post) do |form| %>
+        <div class="mb-3">
+            <%= form.label :day_of_week, class: "form-label" %>
+            <%= form.date_field :day_of_week, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :start_time, class: "form-label" %>
+            <%= form.time_field :start_time, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+            <%= form.label :end_time, class: "form-label" %>
+            <%= form.time_field :end_time, class: "form-control" %>
+        </div>
+        <%= form.submit "Create Slot", class: "btn btn-primary" %>
+        <% end %>
+    </div>
+    </div>
+</div>
 
-<%= form_with(model: @availability, url: availabilities_path, method: :post) do |form| %>
-  <div>
-    <%= form.label :day_of_week %>
-    <%= form.date_field :day_of_week %>
-  </div>
-  <br>
-  <div>
-    <%= form.label :start_time %>
-    <%= form.time_field :start_time %>
-  </div>
-  <br>
-  <div>
-    <%= form.label :end_time %>
-    <%= form.time_field :end_time %>
-  </div>
-  <br>
-  <%= form.submit 'Set Availability' %>
-<% end %>

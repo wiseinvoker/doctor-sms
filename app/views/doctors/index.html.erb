@@ -1,0 +1,26 @@
+<!-- app/views/availabilities/index.html.erb -->
+<div class="container">
+    <h1>My Slots</h1>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% current_doctor.availabilities.each do |availability| %>
+                <tr>
+                <td><%= availability.day_of_week %></td>
+                <td><%= availability.start_time.strftime("%H:%M") %></td>
+                <td><%= availability.end_time.strftime("%H:%M") %></td>
+                <td><%= availability.status %></td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

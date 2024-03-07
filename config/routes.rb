@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   #devise_for :doctors
   devise_for :doctors
   authenticated :doctor do
-    root to: 'availabilities#new', as: :doctor_root
+    #root to: 'availabilities#new', as: :doctor_root
+    root to: 'doctors#index', as: :doctor_root
   end
   resources :doctors, only: [:new, :create]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -25,4 +26,6 @@ Rails.application.routes.draw do
   resources :triggers do
     resources :notifications
   end
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end

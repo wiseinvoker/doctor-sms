@@ -1,20 +1,16 @@
 <!-- app/views/pages/home.html.erb -->
-<h1>Welcome to Our Clinic!</h1>
 
-<div>
-  <% if doctor_signed_in? || patient_signed_in? %>
-    <% if doctor_signed_in? %>
-    <%= link_to 'Logout', destroy_doctor_session_path, method: :delete, class: 'btn btn-danger' %>
+<div class="m-5 p-5 text-center">
+  <h1>Welcome to Our Clinic!</h1>
+  <div class="p-5">
+    <% if doctor_signed_in? || patient_signed_in? %>
+      <div>
+        <h2>Book an Appointment:</h2>
+        <%= link_to 'Book Appointment', appointments_path, class: 'btn btn-success' %>
+      </div>
     <% else %>
-    <%= link_to 'Logout', destroy_patient_session_path, method: :delete, class: 'btn btn-danger' %>
+      <%= link_to 'Log in as Doctor', new_doctor_session_path, class: 'btn btn-primary m-2' %>
+      <%= link_to 'Log in as Patient', new_patient_session_path, class: 'btn btn-primary m-2' %>
     <% end %>
-    <div>
-      <h2>Book an Appointment:</h2>
-      <%= link_to 'Book Appointment', appointments_path, class: 'btn btn-success' %>
-    </div>
-  <% else %>
-    <h2>Login as:</h2>
-    <%= link_to 'Doctor', new_doctor_session_path, class: 'btn btn-primary' %>
-    <%= link_to 'Patient', new_patient_session_path, class: 'btn btn-primary' %>
-  <% end %>
+  </div>
 </div>

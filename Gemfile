@@ -78,3 +78,5 @@ gem "cssbundling-rails", "~> 1.4"
 gem "bootstrap", "~> 5.2"
 
 gem "sassc-rails", "~> 2.1"
+
+gem "sidekiq", "~> 7.2"

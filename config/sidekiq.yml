@@ -1,0 +1,14 @@
+---
+:verbose: false
+:concurrency: 25
+:timeout: 30
+:queues:
+  - critical
+  - default
+  - low
+:development:
+  :concurrency: 5
+:staging:
+  :concurrency: 15
+:production:
+  :concurrency: 50
